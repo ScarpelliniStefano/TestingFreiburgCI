@@ -1,0 +1,1601 @@
+<?xml version="1.0" encoding="UTF-8"?><TestSessionContainer xmlns="http://www.codecover.org/xml/testsession-container" Date="1621271013084" TestSessionContainerId="8d903fa8-af08-48ff-b89a-d45bf12ccc74" version="1.0">
+<SrcFileList>
+<SrcFile Content="package libFSTest.test;&#13;&#10;&#13;&#10;import java.awt.Color;&#13;&#10;import java.awt.Dimension;&#13;&#10;import java.util.Calendar;&#13;&#10;import java.util.GregorianCalendar;&#13;&#10;import java.util.Locale;&#13;&#10;import java.util.TimeZone;&#13;&#10;&#13;&#10;public class DatiGenerazione {&#13;&#10;&#9;private Dimension dimensione;&#13;&#10;&#9;private String Nome;&#13;&#10;&#9;private String Sesso;&#13;&#10;&#9;private Calendar dataNasc;&#13;&#10;&#9;private int MonitorSize;&#13;&#10;&#9;private int WRect;&#13;&#10;&#9;private int HRect;&#13;&#10;&#9;private int HBar;&#13;&#10;&#9;private int XBar;&#13;&#10;&#9;private int livMax;&#13;&#10;&#9;private int livMin;&#13;&#10;&#9;private int distSchermo;&#13;&#10;&#9;private Color c1;&#13;&#10;&#9;private Color c2;&#13;&#10;&#9;private boolean Pos;&#13;&#10;&#9;private double Livello;&#13;&#10;&#9;private double Angolo;&#13;&#10;&#9;private Calendar DataEsame;&#13;&#10;&#9;&#13;&#10;&#9;/**&#13;&#10;&#9; * Costruttore&#13;&#10;&#9; */&#13;&#10;&#9;public DatiGenerazione(){&#13;&#10;&#9;&#9;dimensione=new Dimension(1,1);&#13;&#10;&#9;&#9;Nome=&quot;Unnamed&quot;;&#13;&#10;&#9;&#9;Sesso=&quot;null&quot;;&#13;&#10;&#9;&#9;dataNasc=Calendar.getInstance(TimeZone.getTimeZone(&quot;Europe/Rome&quot;),Locale.ITALY);&#13;&#10;&#9;&#9;MonitorSize=0;&#13;&#10;&#9;&#9;WRect=-1;&#13;&#10;&#9;&#9;HRect=-1;&#13;&#10;&#9;&#9;HBar=-1;&#13;&#10;&#9;&#9;XBar=-1;&#13;&#10;&#9;&#9;distSchermo=0;&#13;&#10;&#9;&#9;c1=Color.RED;&#13;&#10;&#9;&#9;c2=Color.BLUE;&#13;&#10;&#9;&#9;livMin=-1;&#13;&#10;&#9;&#9;livMax=-2;&#13;&#10;&#9;&#9;Pos=false;&#13;&#10;&#9;&#9;Livello=-1;&#13;&#10;&#9;&#9;Angolo=-1;&#13;&#10;&#9;&#9;DataEsame=Calendar.getInstance();&#13;&#10;&#9;&#9;&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;&#13;&#10;&#9;/**&#13;&#10;&#9; * @return the nome&#13;&#10;&#9; */&#13;&#10;&#9;public String getNome() {&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;&#9;return Nome;&#13;&#10;&#13;&#10;&#9;&#9;&#13;&#10;&#9;}&#13;&#10;&#9;/**&#13;&#10;&#9; * @param nome the nome to set&#13;&#10;&#9; */&#13;&#10;&#9;public void setNome(String nome) {&#13;&#10;&#9;&#9;this.Nome=nome;&#13;&#10;&#9;&#9;&#13;&#10;&#9;}&#13;&#10;&#9;/**&#13;&#10;&#9; * @return the sesso&#13;&#10;&#9; */&#13;&#10;&#9;public String getSesso() {&#13;&#10;&#9;&#9;return Sesso;&#13;&#10;&#9;}&#13;&#10;&#9;/**&#13;&#10;&#9; * @param sesso the sesso to set&#13;&#10;&#9; */&#13;&#10;&#9;public void setSesso(String sesso) {&#13;&#10;&#9;&#9;Sesso = sesso;&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;/**&#13;&#10;&#9; * @return the dataNasc&#13;&#10;&#9; */&#13;&#10;&#9;public Calendar getDataNasc() {&#13;&#10;&#9;&#9;return dataNasc;&#13;&#10;&#9;}&#13;&#10;&#9;/**&#13;&#10;&#9; * @param dn the dataNasc to set&#13;&#10;&#9; */&#13;&#10;&#9;public void setDataNasc(Calendar dn) {&#13;&#10;&#9;&#9;Calendar dateNow=Calendar.getInstance(TimeZone.getTimeZone(&quot;Europe/Rome&quot;),Locale.ITALY);&#13;&#10;&#9;&#9;if(dateNow.after(dn)) {&#13;&#10;&#9;&#9;this.dataNasc = dn;}&#13;&#10;&#9;}&#13;&#10;&#9;/**&#13;&#10;&#9; * @param dataNasc the dataNasc to set in dd/mm/yyyy&#13;&#10;&#9; */&#13;&#10;&#9;public void setDataNasc(String dataNascString) {&#13;&#10;&#9;&#9;if(dataNascString.charAt(2)=='/' &amp;&amp; dataNascString.charAt(5)=='/') {&#13;&#10;&#9;&#9;&#9;Calendar d = Calendar.getInstance(TimeZone.getTimeZone(&quot;Europe/Rome&quot;),Locale.ITALY);&#13;&#10;&#9;&#9;&#9;GregorianCalendar data=new GregorianCalendar();&#13;&#10;&#9;&#9;&#9;DataEsame=dataNasc;&#13;&#10;&#9;&#9;&#9;DataEsame.setTime(data.getTime());&#13;&#10;&#9;&#9;&#9;char[] cD=dataNascString.toCharArray();&#13;&#10;&#9;&#9;&#9;String a=&quot;&quot;+cD[6]+cD[7]+cD[8]+cD[9];&#13;&#10;&#9;&#9;&#9;String m=&quot;&quot;+cD[3]+cD[4];&#13;&#10;&#9;&#9;&#9;String g=&quot;&quot;+cD[0]+cD[1];&#13;&#10;&#9;&#9;&#9;if(Integer.parseInt(m)&lt;=11&amp;&amp;Integer.parseInt(g)&lt;=31) {&#13;&#10;&#9;&#9;&#9;&#9;data=new GregorianCalendar(Integer.parseInt(a),Integer.parseInt(m)-1, Integer.parseInt(g));&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;&#9;&#9;if(DataEsame.getTime().after(data.getTime())) {&#13;&#10;&#9;&#9;&#9;&#9;&#9;this.dataNasc.setTime(data.getTime());&#13;&#10;&#9;&#9;&#9;&#9;}&#13;&#10;&#9;&#9;&#9;}&#13;&#10;&#9;&#9;}&#13;&#10;&#9;}&#13;&#10;&#9;/**&#13;&#10;&#9; * @return the monitorSize&#13;&#10;&#9; */&#13;&#10;&#9;public int getMonitorSize() {&#13;&#10;&#9;&#9;return MonitorSize;&#13;&#10;&#9;}&#13;&#10;&#9;/**&#13;&#10;&#9; * @param d the monitorSize to set&#13;&#10;&#9; */&#13;&#10;&#9;public void setMonitorSize(int d) {&#13;&#10;&#9;&#9;if(d&gt;0)&#13;&#10;&#9;&#9;&#9;MonitorSize = d;&#13;&#10;&#9;&#9;else&#13;&#10;&#9;&#9;&#9;MonitorSize=0;&#13;&#10;&#9;}&#13;&#10;&#9;/**&#13;&#10;&#9; * @return the wRect&#13;&#10;&#9; */&#13;&#10;&#9;public int getWRect() {&#13;&#10;&#9;&#9;return WRect;&#13;&#10;&#9;}&#13;&#10;&#9;/**&#13;&#10;&#9; * @param wRect the wRect to set&#13;&#10;&#9; */&#13;&#10;&#9;public void setWRect(int wRect) {&#13;&#10;&#9;&#9;if(wRect&lt;(dimensione.getWidth()-20)&amp;&amp;wRect&gt;0) WRect = wRect;&#13;&#10;&#9;&#9;else WRect=(int) (dimensione.getWidth()-20);&#13;&#10;&#9;}&#13;&#10;&#9;/**&#13;&#10;&#9; * @return the hRect&#13;&#10;&#9; */&#13;&#10;&#9;public int getHRect() {&#13;&#10;&#9;&#9;return HRect;&#13;&#10;&#9;}&#13;&#10;&#9;/**&#13;&#10;&#9; * @param hRect the hRect to set&#13;&#10;&#9; */&#13;&#10;&#9;public void setHRect(int hRect) {&#13;&#10;&#9;&#9;if(hRect&lt;(dimensione.getHeight()-20)&amp;&amp;hRect&gt;0) HRect = hRect;&#13;&#10;&#9;&#9;else HRect=(int) (dimensione.getHeight()-20);&#13;&#10;&#9;}&#13;&#10;&#9;/**&#13;&#10;&#9; * @return the hBar&#13;&#10;&#9; */&#13;&#10;&#9;public int getHBar() {&#13;&#10;&#9;&#9;return HBar;&#13;&#10;&#9;}&#13;&#10;&#9;/**&#13;&#10;&#9; * @param hBar the hBar to set&#13;&#10;&#9; */&#13;&#10;&#9;public void setHBar(int hBar) {&#13;&#10;&#9;&#9;if(hBar&lt;(HRect-10)&amp;&amp;hBar&gt;0)&#9;HBar = hBar;&#13;&#10;&#9;&#9;else HBar=HRect-10;&#13;&#10;&#9;}&#13;&#10;&#9;/**&#13;&#10;&#9; * @return the xBar&#13;&#10;&#9; */&#13;&#10;&#9;public int getXBar() {&#13;&#10;&#9;&#9;return XBar;&#13;&#10;&#9;}&#13;&#10;&#9;/**&#13;&#10;&#9; * @param xBar the xBar to set&#13;&#10;&#9; */&#13;&#10;&#9;public void setXBar(int xBar) throws ArithmeticException {&#13;&#10;&#9;&#9;if(livMin==-1&amp;&amp;livMax&gt;=livMin)&#13;&#10;&#9;&#9;&#9;this.livMin=livMax;&#13;&#10;&#9;&#9;if(xBar&lt;=livMax &amp;&amp; xBar&gt;=livMin)&#9;this.XBar = xBar;&#13;&#10;&#9;&#9;else if(livMax==-2) &#13;&#10;&#9;&#9;&#9;&#9;throw new ArithmeticException(&quot;Inserisci un livello massimo corretto&quot;);&#13;&#10;&#9;&#9;&#9;else&#13;&#10;&#9;&#9;&#9;&#9;this.XBar=livMax;&#13;&#10;&#9;}&#13;&#10;&#9;/**&#13;&#10;&#9; * @return the livMax&#13;&#10;&#9; */&#13;&#10;&#9;public int getLivMax() {&#13;&#10;&#9;&#9;return livMax;&#13;&#10;&#9;}&#13;&#10;&#13;&#10;&#13;&#10;&#9;/**&#13;&#10;&#9; * @param livMax the livMax to set&#13;&#10;&#9; */&#13;&#10;&#9;public void setLivMax(int livMax) {&#13;&#10;&#9;&#9;if(livMax&lt;(WRect-10)&amp;&amp;livMax&gt;0)&#9;this.livMax = livMax;&#13;&#10;&#9;&#9;else this.livMax = WRect-10;&#13;&#10;&#9;&#9;this.XBar=this.livMax;&#13;&#10;&#9;}&#13;&#10;&#13;&#10;&#13;&#10;&#9;/**&#13;&#10;&#9; * @return the livMin&#13;&#10;&#9; */&#13;&#10;&#9;public int getLivMin() {&#13;&#10;&#9;&#9;return livMin;&#13;&#10;&#9;}&#13;&#10;&#13;&#10;&#13;&#10;&#9;/**&#13;&#10;&#9; * @param livMin the livMin to set&#13;&#10;&#9; */&#13;&#10;&#9;public void setLivMin(int livMin) {&#13;&#10;&#9;&#9;if(livMax==-2)&#13;&#10;&#9;&#9;&#9;livMax=livMin;&#13;&#10;&#9;&#9;if(livMin&lt;(WRect-10)&amp;&amp;livMin&gt;0&amp;&amp;livMin&lt;=livMax)&#9;this.livMin = livMin;&#13;&#10;&#9;&#9;else this.livMin=livMax;&#13;&#10;&#9;}&#13;&#10;&#13;&#10;&#13;&#10;&#9;/**&#13;&#10;&#9; * @return the distSchermo&#13;&#10;&#9; */&#13;&#10;&#9;public int getDistSchermo() {&#13;&#10;&#9;&#9;return distSchermo;&#13;&#10;&#9;}&#13;&#10;&#9;/**&#13;&#10;&#9; * @param distSchermo the distSchermo to set&#13;&#10;&#9; */&#13;&#10;&#9;public void setDistSchermo(int distSchermo) {&#13;&#10;&#9;&#9;this.distSchermo = distSchermo*10;&#13;&#10;&#9;}&#13;&#10;&#9;/**&#13;&#10;&#9; * @return the c1&#13;&#10;&#9; */&#13;&#10;&#9;public Color getC1() {&#13;&#10;&#9;&#9;return c1;&#13;&#10;&#9;}&#13;&#10;&#9;/**&#13;&#10;&#9; * @param c1 the c1 to set&#13;&#10;&#9; */&#13;&#10;&#9;public void setC1(Color c1) {&#13;&#10;&#9;&#9;this.c1 = c1;&#13;&#10;&#9;}&#13;&#10;&#9;/**&#13;&#10;&#9; * @return the c2&#13;&#10;&#9; */&#13;&#10;&#9;public Color getC2() {&#13;&#10;&#9;&#9;return c2;&#13;&#10;&#9;}&#13;&#10;&#9;/**&#13;&#10;&#9; * @param c2 the c2 to set&#13;&#10;&#9; */&#13;&#10;&#9;public void setC2(Color c2) {&#13;&#10;&#9;&#9;this.c2 = c2;&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;/**&#13;&#10;&#9; * @return the pos&#13;&#10;&#9; */&#13;&#10;&#9;public boolean getPos() {&#13;&#10;&#9;&#9;return Pos;&#13;&#10;&#9;}&#13;&#10;&#13;&#10;&#13;&#10;&#9;/**&#13;&#10;&#9; * @param pos the position to set, false if behind or true if in front&#13;&#10;&#9; */&#13;&#10;&#9;public void setPos(boolean pos) {&#13;&#10;&#9;&#9;if(pos!=Pos) {&#13;&#10;&#9;&#9;&#9;Color cTemp=getC1();&#13;&#10;&#9;&#9;&#9;this.setC1(getC2());&#13;&#10;&#9;&#9;&#9;this.setC2(cTemp);&#13;&#10;&#9;&#9;}&#13;&#10;&#9;&#9;Pos = pos;&#13;&#10;&#9;&#9;&#13;&#10;&#9;}&#13;&#10;&#13;&#10;&#13;&#10;&#9;&#13;&#10;&#9;/**&#13;&#10;&#9; * @return the livello in µm&#13;&#10;&#9; */&#13;&#10;&#9;public double getLivello() {&#13;&#10;&#9;&#9;return Livello;&#13;&#10;&#9;}&#13;&#10;&#9;/**&#13;&#10;&#9; * @param i the livello to set (in µm)&#13;&#10;&#9; */&#13;&#10;&#9;public void setLivello(double i) {&#13;&#10;&#9;&#9;Livello = i;&#13;&#10;&#9;}&#13;&#10;&#9;/**&#13;&#10;&#9; * @return the angolo&#13;&#10;&#9; */&#13;&#10;&#9;public double getAngolo() {&#13;&#10;&#9;&#9;return Angolo;&#13;&#10;&#9;}&#13;&#10;&#9;/**&#13;&#10;&#9; * @param d the angolo to set&#13;&#10;&#9; */&#13;&#10;&#9;public void setAngolo(double d) {&#13;&#10;&#9;&#9;this.Angolo = d;&#13;&#10;&#9;}&#13;&#10;&#9;/**&#13;&#10;&#9; * @return the dataEsame&#13;&#10;&#9; */&#13;&#10;&#9;public Calendar getDataEsame() {&#13;&#10;&#9;&#9;return DataEsame;&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;/**&#13;&#10;&#9; * @param dimensione the dimension to set (Dimension format)&#13;&#10;&#9; */&#13;&#10;&#9;public void setDimensione(Dimension dimensione) {&#13;&#10;&#9;&#9;this.dimensione = dimensione;&#13;&#10;&#9;}&#13;&#10;&#9;/**&#13;&#10;&#9; * @return dimensione&#13;&#10;&#9; */&#13;&#10;&#9;public Dimension getDimensione() {&#13;&#10;&#9;&#9;return dimensione;&#13;&#10;&#9;}&#13;&#10;&#9;/**&#13;&#10;&#9; * @param dimensione the dimension to set (width and height in integer)&#13;&#10;&#9; */&#13;&#10;&#9;public void setDimensione(int w,int h) {&#13;&#10;&#9;&#9;this.dimensione = new Dimension(w,h);&#13;&#10;&#9;}&#13;&#10;&#9;/**&#13;&#10;&#9; * @param dimensione the dimension to set (width and height in double)&#13;&#10;&#9; */&#13;&#10;&#9;public void setDimensione(double w,double h) {&#13;&#10;&#9;&#9;this.dimensione = new Dimension((int)w,(int)h);&#13;&#10;&#9;}&#13;&#10;&#13;&#10;&#13;&#10;&#9;&#13;&#10;&#9;&#13;&#10;}&#13;&#10;" Filename="DatiGenerazione.java" Intrnl_Id="1"/>
+</SrcFileList>
+<CritList>
+<CritListEntry Name="org.codecover.model.utils.criteria.LoopCoverage" PluginName="org.codecover"/>
+<CritListEntry Name="org.codecover.model.utils.criteria.ConditionCoverage" PluginName="org.codecover"/>
+<CritListEntry Name="org.codecover.model.utils.criteria.BranchCoverage" PluginName="org.codecover"/>
+<CritListEntry Name="org.codecover.model.utils.criteria.StatementCoverage" PluginName="org.codecover"/>
+</CritList>
+<BoolOpList>
+<BoolOp Arity="2" Intrnl_Id="2" Name="conditional and (&amp;&amp;)">
+<BoolAssgnmntBoolMapList>
+<MapEntry BoolAssgnmnt="02" Value="false"/>
+<MapEntry BoolAssgnmnt="10" Value="false"/>
+<MapEntry BoolAssgnmnt="11" Value="true"/>
+</BoolAssgnmntBoolMapList>
+</BoolOp>
+</BoolOpList>
+<HierarchyLvlTypeList>
+<HierarchyLvlType EnglishName="package" IntrnlName="package" Intrnl_Id="3"/>
+<HierarchyLvlType EnglishName="method" IntrnlName="method" Intrnl_Id="4"/>
+<HierarchyLvlType EnglishName="class" IntrnlName="class" Intrnl_Id="5"/>
+<HierarchyLvlType EnglishName="default package" IntrnlName="default package" Intrnl_Id="6"/>
+</HierarchyLvlTypeList>
+<MASTRoot>
+<HierarchyLvl HierarchyLvlId="129" HierarchyLvlTypeId="6" Intrnl_Id="7" Name="default package">
+<Header/>
+<LocList/>
+<HierarchyLvl HierarchyLvlId="128" HierarchyLvlTypeId="3" Intrnl_Id="8" Name="libFSTest">
+<Header/>
+<LocList/>
+<HierarchyLvl HierarchyLvlId="127" HierarchyLvlTypeId="3" Intrnl_Id="9" Name="test">
+<Header/>
+<LocList/>
+<HierarchyLvl HierarchyLvlId="126" HierarchyLvlTypeId="5" Intrnl_Id="10" Name="DatiGenerazione">
+<Header>
+<Loc EndOffset="228" SrcFileId="1" StartOffset="200"/>
+</Header>
+<LocList>
+<Loc EndOffset="6823" SrcFileId="1" StartOffset="200"/>
+</LocList>
+<HierarchyLvl HierarchyLvlId="87" HierarchyLvlTypeId="4" Intrnl_Id="11" Name="DatiGenerazione">
+<Header>
+<Loc EndOffset="721" SrcFileId="1" StartOffset="697"/>
+</Header>
+<LocList>
+<Loc EndOffset="1113" SrcFileId="1" StartOffset="697"/>
+</LocList>
+<StmntSeq Intrnl_Id="12">
+<LocList>
+<Loc EndOffset="756" SrcFileId="1" StartOffset="726"/>
+<Loc EndOffset="775" SrcFileId="1" StartOffset="760"/>
+<Loc EndOffset="792" SrcFileId="1" StartOffset="779"/>
+<Loc EndOffset="876" SrcFileId="1" StartOffset="796"/>
+<Loc EndOffset="894" SrcFileId="1" StartOffset="880"/>
+<Loc EndOffset="907" SrcFileId="1" StartOffset="898"/>
+<Loc EndOffset="920" SrcFileId="1" StartOffset="911"/>
+<Loc EndOffset="932" SrcFileId="1" StartOffset="924"/>
+<Loc EndOffset="944" SrcFileId="1" StartOffset="936"/>
+<Loc EndOffset="962" SrcFileId="1" StartOffset="948"/>
+<Loc EndOffset="979" SrcFileId="1" StartOffset="966"/>
+<Loc EndOffset="997" SrcFileId="1" StartOffset="983"/>
+<Loc EndOffset="1011" SrcFileId="1" StartOffset="1001"/>
+<Loc EndOffset="1025" SrcFileId="1" StartOffset="1015"/>
+<Loc EndOffset="1039" SrcFileId="1" StartOffset="1029"/>
+<Loc EndOffset="1054" SrcFileId="1" StartOffset="1043"/>
+<Loc EndOffset="1068" SrcFileId="1" StartOffset="1058"/>
+<Loc EndOffset="1105" SrcFileId="1" StartOffset="1072"/>
+</LocList>
+<BasicStmnt CovItemId="S1" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="13">
+<LocList>
+<Loc EndOffset="756" SrcFileId="1" StartOffset="726"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S2" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="14">
+<LocList>
+<Loc EndOffset="775" SrcFileId="1" StartOffset="760"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S3" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="15">
+<LocList>
+<Loc EndOffset="792" SrcFileId="1" StartOffset="779"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S4" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="16">
+<LocList>
+<Loc EndOffset="876" SrcFileId="1" StartOffset="796"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S5" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="17">
+<LocList>
+<Loc EndOffset="894" SrcFileId="1" StartOffset="880"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S6" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="18">
+<LocList>
+<Loc EndOffset="907" SrcFileId="1" StartOffset="898"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S7" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="19">
+<LocList>
+<Loc EndOffset="920" SrcFileId="1" StartOffset="911"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S8" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="20">
+<LocList>
+<Loc EndOffset="932" SrcFileId="1" StartOffset="924"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S9" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="21">
+<LocList>
+<Loc EndOffset="944" SrcFileId="1" StartOffset="936"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S10" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="22">
+<LocList>
+<Loc EndOffset="962" SrcFileId="1" StartOffset="948"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S11" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="23">
+<LocList>
+<Loc EndOffset="979" SrcFileId="1" StartOffset="966"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S12" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="24">
+<LocList>
+<Loc EndOffset="997" SrcFileId="1" StartOffset="983"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S13" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="25">
+<LocList>
+<Loc EndOffset="1011" SrcFileId="1" StartOffset="1001"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S14" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="26">
+<LocList>
+<Loc EndOffset="1025" SrcFileId="1" StartOffset="1015"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S15" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="27">
+<LocList>
+<Loc EndOffset="1039" SrcFileId="1" StartOffset="1029"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S16" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="28">
+<LocList>
+<Loc EndOffset="1054" SrcFileId="1" StartOffset="1043"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S17" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="29">
+<LocList>
+<Loc EndOffset="1068" SrcFileId="1" StartOffset="1058"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S18" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="30">
+<LocList>
+<Loc EndOffset="1105" SrcFileId="1" StartOffset="1072"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="88" HierarchyLvlTypeId="4" Intrnl_Id="31" Name="getNome">
+<Header>
+<Loc EndOffset="1179" SrcFileId="1" StartOffset="1156"/>
+</Header>
+<LocList>
+<Loc EndOffset="1212" SrcFileId="1" StartOffset="1156"/>
+</LocList>
+<StmntSeq Intrnl_Id="32">
+<LocList>
+<Loc EndOffset="1202" SrcFileId="1" StartOffset="1190"/>
+</LocList>
+<BasicStmnt CovItemId="S19" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="33">
+<LocList>
+<Loc EndOffset="1202" SrcFileId="1" StartOffset="1190"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="89" HierarchyLvlTypeId="4" Intrnl_Id="34" Name="setNome">
+<Header>
+<Loc EndOffset="1292" SrcFileId="1" StartOffset="1260"/>
+</Header>
+<LocList>
+<Loc EndOffset="1321" SrcFileId="1" StartOffset="1260"/>
+</LocList>
+<StmntSeq Intrnl_Id="35">
+<LocList>
+<Loc EndOffset="1313" SrcFileId="1" StartOffset="1298"/>
+</LocList>
+<BasicStmnt CovItemId="S20" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="36">
+<LocList>
+<Loc EndOffset="1313" SrcFileId="1" StartOffset="1298"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="90" HierarchyLvlTypeId="4" Intrnl_Id="37" Name="getSesso">
+<Header>
+<Loc EndOffset="1383" SrcFileId="1" StartOffset="1359"/>
+</Header>
+<LocList>
+<Loc EndOffset="1406" SrcFileId="1" StartOffset="1359"/>
+</LocList>
+<StmntSeq Intrnl_Id="38">
+<LocList>
+<Loc EndOffset="1402" SrcFileId="1" StartOffset="1389"/>
+</LocList>
+<BasicStmnt CovItemId="S21" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="39">
+<LocList>
+<Loc EndOffset="1402" SrcFileId="1" StartOffset="1389"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="91" HierarchyLvlTypeId="4" Intrnl_Id="40" Name="setSesso">
+<Header>
+<Loc EndOffset="1490" SrcFileId="1" StartOffset="1456"/>
+</Header>
+<LocList>
+<Loc EndOffset="1514" SrcFileId="1" StartOffset="1456"/>
+</LocList>
+<StmntSeq Intrnl_Id="41">
+<LocList>
+<Loc EndOffset="1510" SrcFileId="1" StartOffset="1496"/>
+</LocList>
+<BasicStmnt CovItemId="S22" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="42">
+<LocList>
+<Loc EndOffset="1510" SrcFileId="1" StartOffset="1496"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="92" HierarchyLvlTypeId="4" Intrnl_Id="43" Name="getDataNasc">
+<Header>
+<Loc EndOffset="1587" SrcFileId="1" StartOffset="1558"/>
+</Header>
+<LocList>
+<Loc EndOffset="1613" SrcFileId="1" StartOffset="1558"/>
+</LocList>
+<StmntSeq Intrnl_Id="44">
+<LocList>
+<Loc EndOffset="1609" SrcFileId="1" StartOffset="1593"/>
+</LocList>
+<BasicStmnt CovItemId="S23" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="45">
+<LocList>
+<Loc EndOffset="1609" SrcFileId="1" StartOffset="1593"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="93" HierarchyLvlTypeId="4" Intrnl_Id="46" Name="setDataNasc">
+<Header>
+<Loc EndOffset="1699" SrcFileId="1" StartOffset="1663"/>
+</Header>
+<LocList>
+<Loc EndOffset="1848" SrcFileId="1" StartOffset="1663"/>
+</LocList>
+<StmntSeq Intrnl_Id="47">
+<LocList>
+<Loc EndOffset="1793" SrcFileId="1" StartOffset="1705"/>
+<Loc EndOffset="1844" SrcFileId="1" StartOffset="1797"/>
+</LocList>
+<BasicStmnt CovItemId="S24" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="48">
+<LocList>
+<Loc EndOffset="1793" SrcFileId="1" StartOffset="1705"/>
+</LocList>
+</BasicStmnt>
+<CondStmnt CovItemId="S25" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="49">
+<Branch CovItemId="B1" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Implct="false" Intrnl_Id="50">
+<Cond/>
+<LocList>
+<Loc EndOffset="1844" SrcFileId="1" StartOffset="1819"/>
+</LocList>
+<StmntSeq Intrnl_Id="51">
+<LocList>
+<Loc EndOffset="1843" SrcFileId="1" StartOffset="1824"/>
+</LocList>
+<BasicStmnt CovItemId="S26" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="52">
+<LocList>
+<Loc EndOffset="1843" SrcFileId="1" StartOffset="1824"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B2" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Implct="true" Intrnl_Id="53">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="54">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="1799" SrcFileId="1" StartOffset="1797"/>
+<LocList>
+<Loc EndOffset="1844" SrcFileId="1" StartOffset="1797"/>
+</LocList>
+<RootTerm CovItemId="C1" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="55">
+<BasicBoolTerm Intrnl_Id="56">
+<LocList>
+<Loc EndOffset="1817" SrcFileId="1" StartOffset="1800"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="94" HierarchyLvlTypeId="4" Intrnl_Id="57" Name="setDataNasc">
+<Header>
+<Loc EndOffset="1964" SrcFileId="1" StartOffset="1918"/>
+</Header>
+<LocList>
+<Loc EndOffset="2665" SrcFileId="1" StartOffset="1918"/>
+</LocList>
+<StmntSeq Intrnl_Id="58">
+<LocList>
+<Loc EndOffset="2661" SrcFileId="1" StartOffset="1970"/>
+</LocList>
+<CondStmnt CovItemId="S27" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="59">
+<Branch CovItemId="B3" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Implct="false" Intrnl_Id="60">
+<Cond/>
+<LocList>
+<Loc EndOffset="2661" SrcFileId="1" StartOffset="2037"/>
+</LocList>
+<StmntSeq Intrnl_Id="61">
+<LocList>
+<Loc EndOffset="2127" SrcFileId="1" StartOffset="2043"/>
+<Loc EndOffset="2179" SrcFileId="1" StartOffset="2132"/>
+<Loc EndOffset="2203" SrcFileId="1" StartOffset="2184"/>
+<Loc EndOffset="2242" SrcFileId="1" StartOffset="2208"/>
+<Loc EndOffset="2286" SrcFileId="1" StartOffset="2247"/>
+<Loc EndOffset="2327" SrcFileId="1" StartOffset="2291"/>
+<Loc EndOffset="2356" SrcFileId="1" StartOffset="2332"/>
+<Loc EndOffset="2385" SrcFileId="1" StartOffset="2361"/>
+<Loc EndOffset="2656" SrcFileId="1" StartOffset="2390"/>
+</LocList>
+<BasicStmnt CovItemId="S28" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="62">
+<LocList>
+<Loc EndOffset="2127" SrcFileId="1" StartOffset="2043"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S29" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="63">
+<LocList>
+<Loc EndOffset="2179" SrcFileId="1" StartOffset="2132"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S30" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="64">
+<LocList>
+<Loc EndOffset="2203" SrcFileId="1" StartOffset="2184"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S31" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="65">
+<LocList>
+<Loc EndOffset="2242" SrcFileId="1" StartOffset="2208"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S32" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="66">
+<LocList>
+<Loc EndOffset="2286" SrcFileId="1" StartOffset="2247"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S33" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="67">
+<LocList>
+<Loc EndOffset="2327" SrcFileId="1" StartOffset="2291"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S34" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="68">
+<LocList>
+<Loc EndOffset="2356" SrcFileId="1" StartOffset="2332"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S35" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="69">
+<LocList>
+<Loc EndOffset="2385" SrcFileId="1" StartOffset="2361"/>
+</LocList>
+</BasicStmnt>
+<CondStmnt CovItemId="S36" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="70">
+<Branch CovItemId="B5" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Implct="false" Intrnl_Id="71">
+<Cond/>
+<LocList>
+<Loc EndOffset="2656" SrcFileId="1" StartOffset="2443"/>
+</LocList>
+<StmntSeq Intrnl_Id="72">
+<LocList>
+<Loc EndOffset="2541" SrcFileId="1" StartOffset="2450"/>
+<Loc EndOffset="2650" SrcFileId="1" StartOffset="2551"/>
+</LocList>
+<BasicStmnt CovItemId="S37" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="73">
+<LocList>
+<Loc EndOffset="2541" SrcFileId="1" StartOffset="2450"/>
+</LocList>
+</BasicStmnt>
+<CondStmnt CovItemId="S38" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="74">
+<Branch CovItemId="B7" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Implct="false" Intrnl_Id="75">
+<Cond/>
+<LocList>
+<Loc EndOffset="2650" SrcFileId="1" StartOffset="2597"/>
+</LocList>
+<StmntSeq Intrnl_Id="76">
+<LocList>
+<Loc EndOffset="2643" SrcFileId="1" StartOffset="2605"/>
+</LocList>
+<BasicStmnt CovItemId="S39" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="77">
+<LocList>
+<Loc EndOffset="2643" SrcFileId="1" StartOffset="2605"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B8" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Implct="true" Intrnl_Id="78">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="79">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="2553" SrcFileId="1" StartOffset="2551"/>
+<LocList>
+<Loc EndOffset="2650" SrcFileId="1" StartOffset="2551"/>
+</LocList>
+<RootTerm CovItemId="C4" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="80">
+<BasicBoolTerm Intrnl_Id="81">
+<LocList>
+<Loc EndOffset="2595" SrcFileId="1" StartOffset="2554"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B6" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Implct="true" Intrnl_Id="82">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="83">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="2392" SrcFileId="1" StartOffset="2390"/>
+<LocList>
+<Loc EndOffset="2656" SrcFileId="1" StartOffset="2390"/>
+</LocList>
+<RootTerm CovItemId="C3" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="84">
+<OpTerm BooleanOpId="2" Intrnl_Id="85">
+<BasicBoolTerm Intrnl_Id="86">
+<LocList>
+<Loc EndOffset="2416" SrcFileId="1" StartOffset="2393"/>
+</LocList>
+</BasicBoolTerm>
+<BasicBoolTerm Intrnl_Id="87">
+<LocList>
+<Loc EndOffset="2441" SrcFileId="1" StartOffset="2418"/>
+</LocList>
+</BasicBoolTerm>
+<LocList>
+<Loc EndOffset="2418" SrcFileId="1" StartOffset="2416"/>
+</LocList>
+</OpTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B4" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Implct="true" Intrnl_Id="88">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="89">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="1972" SrcFileId="1" StartOffset="1970"/>
+<LocList>
+<Loc EndOffset="2661" SrcFileId="1" StartOffset="1970"/>
+</LocList>
+<RootTerm CovItemId="C2" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="90">
+<OpTerm BooleanOpId="2" Intrnl_Id="91">
+<BasicBoolTerm Intrnl_Id="92">
+<LocList>
+<Loc EndOffset="2002" SrcFileId="1" StartOffset="1973"/>
+</LocList>
+</BasicBoolTerm>
+<BasicBoolTerm Intrnl_Id="93">
+<LocList>
+<Loc EndOffset="2035" SrcFileId="1" StartOffset="2006"/>
+</LocList>
+</BasicBoolTerm>
+<LocList>
+<Loc EndOffset="2005" SrcFileId="1" StartOffset="2003"/>
+</LocList>
+</OpTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="95" HierarchyLvlTypeId="4" Intrnl_Id="94" Name="getMonitorSize">
+<Header>
+<Loc EndOffset="2736" SrcFileId="1" StartOffset="2709"/>
+</Header>
+<LocList>
+<Loc EndOffset="2765" SrcFileId="1" StartOffset="2709"/>
+</LocList>
+<StmntSeq Intrnl_Id="95">
+<LocList>
+<Loc EndOffset="2761" SrcFileId="1" StartOffset="2742"/>
+</LocList>
+<BasicStmnt CovItemId="S40" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="96">
+<LocList>
+<Loc EndOffset="2761" SrcFileId="1" StartOffset="2742"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="96" HierarchyLvlTypeId="4" Intrnl_Id="97" Name="setMonitorSize">
+<Header>
+<Loc EndOffset="2850" SrcFileId="1" StartOffset="2817"/>
+</Header>
+<LocList>
+<Loc EndOffset="2915" SrcFileId="1" StartOffset="2817"/>
+</LocList>
+<StmntSeq Intrnl_Id="98">
+<LocList>
+<Loc EndOffset="2911" SrcFileId="1" StartOffset="2856"/>
+</LocList>
+<CondStmnt CovItemId="S41" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="99">
+<Branch CovItemId="B9" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Implct="false" Intrnl_Id="100">
+<Cond/>
+<LocList>
+<Loc EndOffset="2884" SrcFileId="1" StartOffset="2868"/>
+</LocList>
+<StmntSeq Intrnl_Id="101">
+<LocList>
+<Loc EndOffset="2884" SrcFileId="1" StartOffset="2868"/>
+</LocList>
+<BasicStmnt CovItemId="S42" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="102">
+<LocList>
+<Loc EndOffset="2884" SrcFileId="1" StartOffset="2868"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B10" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Implct="false" Intrnl_Id="103">
+<Cond>
+<Loc EndOffset="2892" SrcFileId="1" StartOffset="2888"/>
+</Cond>
+<LocList>
+<Loc EndOffset="2911" SrcFileId="1" StartOffset="2897"/>
+</LocList>
+<StmntSeq Intrnl_Id="104">
+<LocList>
+<Loc EndOffset="2911" SrcFileId="1" StartOffset="2897"/>
+</LocList>
+<BasicStmnt CovItemId="S43" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="105">
+<LocList>
+<Loc EndOffset="2911" SrcFileId="1" StartOffset="2897"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="2858" SrcFileId="1" StartOffset="2856"/>
+<LocList>
+<Loc EndOffset="2911" SrcFileId="1" StartOffset="2856"/>
+</LocList>
+<RootTerm CovItemId="C5" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="106">
+<BasicBoolTerm Intrnl_Id="107">
+<LocList>
+<Loc EndOffset="2862" SrcFileId="1" StartOffset="2859"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="97" HierarchyLvlTypeId="4" Intrnl_Id="108" Name="getWRect">
+<Header>
+<Loc EndOffset="2974" SrcFileId="1" StartOffset="2953"/>
+</Header>
+<LocList>
+<Loc EndOffset="2997" SrcFileId="1" StartOffset="2953"/>
+</LocList>
+<StmntSeq Intrnl_Id="109">
+<LocList>
+<Loc EndOffset="2993" SrcFileId="1" StartOffset="2980"/>
+</LocList>
+<BasicStmnt CovItemId="S44" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="110">
+<LocList>
+<Loc EndOffset="2993" SrcFileId="1" StartOffset="2980"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="98" HierarchyLvlTypeId="4" Intrnl_Id="111" Name="setWRect">
+<Header>
+<Loc EndOffset="3078" SrcFileId="1" StartOffset="3047"/>
+</Header>
+<LocList>
+<Loc EndOffset="3196" SrcFileId="1" StartOffset="3047"/>
+</LocList>
+<StmntSeq Intrnl_Id="112">
+<LocList>
+<Loc EndOffset="3192" SrcFileId="1" StartOffset="3084"/>
+</LocList>
+<CondStmnt CovItemId="S45" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="113">
+<Branch CovItemId="B11" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Implct="false" Intrnl_Id="114">
+<Cond/>
+<LocList>
+<Loc EndOffset="3144" SrcFileId="1" StartOffset="3130"/>
+</LocList>
+<StmntSeq Intrnl_Id="115">
+<LocList>
+<Loc EndOffset="3144" SrcFileId="1" StartOffset="3130"/>
+</LocList>
+<BasicStmnt CovItemId="S46" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="116">
+<LocList>
+<Loc EndOffset="3144" SrcFileId="1" StartOffset="3130"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B12" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Implct="false" Intrnl_Id="117">
+<Cond>
+<Loc EndOffset="3152" SrcFileId="1" StartOffset="3148"/>
+</Cond>
+<LocList>
+<Loc EndOffset="3192" SrcFileId="1" StartOffset="3153"/>
+</LocList>
+<StmntSeq Intrnl_Id="118">
+<LocList>
+<Loc EndOffset="3192" SrcFileId="1" StartOffset="3153"/>
+</LocList>
+<BasicStmnt CovItemId="S47" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="119">
+<LocList>
+<Loc EndOffset="3192" SrcFileId="1" StartOffset="3153"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="3086" SrcFileId="1" StartOffset="3084"/>
+<LocList>
+<Loc EndOffset="3192" SrcFileId="1" StartOffset="3084"/>
+</LocList>
+<RootTerm CovItemId="C6" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="120">
+<OpTerm BooleanOpId="2" Intrnl_Id="121">
+<BasicBoolTerm Intrnl_Id="122">
+<LocList>
+<Loc EndOffset="3119" SrcFileId="1" StartOffset="3087"/>
+</LocList>
+</BasicBoolTerm>
+<BasicBoolTerm Intrnl_Id="123">
+<LocList>
+<Loc EndOffset="3128" SrcFileId="1" StartOffset="3121"/>
+</LocList>
+</BasicBoolTerm>
+<LocList>
+<Loc EndOffset="3121" SrcFileId="1" StartOffset="3119"/>
+</LocList>
+</OpTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="99" HierarchyLvlTypeId="4" Intrnl_Id="124" Name="getHRect">
+<Header>
+<Loc EndOffset="3255" SrcFileId="1" StartOffset="3234"/>
+</Header>
+<LocList>
+<Loc EndOffset="3278" SrcFileId="1" StartOffset="3234"/>
+</LocList>
+<StmntSeq Intrnl_Id="125">
+<LocList>
+<Loc EndOffset="3274" SrcFileId="1" StartOffset="3261"/>
+</LocList>
+<BasicStmnt CovItemId="S48" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="126">
+<LocList>
+<Loc EndOffset="3274" SrcFileId="1" StartOffset="3261"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="100" HierarchyLvlTypeId="4" Intrnl_Id="127" Name="setHRect">
+<Header>
+<Loc EndOffset="3359" SrcFileId="1" StartOffset="3328"/>
+</Header>
+<LocList>
+<Loc EndOffset="3479" SrcFileId="1" StartOffset="3328"/>
+</LocList>
+<StmntSeq Intrnl_Id="128">
+<LocList>
+<Loc EndOffset="3475" SrcFileId="1" StartOffset="3365"/>
+</LocList>
+<CondStmnt CovItemId="S49" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="129">
+<Branch CovItemId="B13" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Implct="false" Intrnl_Id="130">
+<Cond/>
+<LocList>
+<Loc EndOffset="3426" SrcFileId="1" StartOffset="3412"/>
+</LocList>
+<StmntSeq Intrnl_Id="131">
+<LocList>
+<Loc EndOffset="3426" SrcFileId="1" StartOffset="3412"/>
+</LocList>
+<BasicStmnt CovItemId="S50" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="132">
+<LocList>
+<Loc EndOffset="3426" SrcFileId="1" StartOffset="3412"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B14" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Implct="false" Intrnl_Id="133">
+<Cond>
+<Loc EndOffset="3434" SrcFileId="1" StartOffset="3430"/>
+</Cond>
+<LocList>
+<Loc EndOffset="3475" SrcFileId="1" StartOffset="3435"/>
+</LocList>
+<StmntSeq Intrnl_Id="134">
+<LocList>
+<Loc EndOffset="3475" SrcFileId="1" StartOffset="3435"/>
+</LocList>
+<BasicStmnt CovItemId="S51" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="135">
+<LocList>
+<Loc EndOffset="3475" SrcFileId="1" StartOffset="3435"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="3367" SrcFileId="1" StartOffset="3365"/>
+<LocList>
+<Loc EndOffset="3475" SrcFileId="1" StartOffset="3365"/>
+</LocList>
+<RootTerm CovItemId="C7" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="136">
+<OpTerm BooleanOpId="2" Intrnl_Id="137">
+<BasicBoolTerm Intrnl_Id="138">
+<LocList>
+<Loc EndOffset="3401" SrcFileId="1" StartOffset="3368"/>
+</LocList>
+</BasicBoolTerm>
+<BasicBoolTerm Intrnl_Id="139">
+<LocList>
+<Loc EndOffset="3410" SrcFileId="1" StartOffset="3403"/>
+</LocList>
+</BasicBoolTerm>
+<LocList>
+<Loc EndOffset="3403" SrcFileId="1" StartOffset="3401"/>
+</LocList>
+</OpTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="101" HierarchyLvlTypeId="4" Intrnl_Id="140" Name="getHBar">
+<Header>
+<Loc EndOffset="3536" SrcFileId="1" StartOffset="3516"/>
+</Header>
+<LocList>
+<Loc EndOffset="3558" SrcFileId="1" StartOffset="3516"/>
+</LocList>
+<StmntSeq Intrnl_Id="141">
+<LocList>
+<Loc EndOffset="3554" SrcFileId="1" StartOffset="3542"/>
+</LocList>
+<BasicStmnt CovItemId="S52" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="142">
+<LocList>
+<Loc EndOffset="3554" SrcFileId="1" StartOffset="3542"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="102" HierarchyLvlTypeId="4" Intrnl_Id="143" Name="setHBar">
+<Header>
+<Loc EndOffset="3635" SrcFileId="1" StartOffset="3606"/>
+</Header>
+<LocList>
+<Loc EndOffset="3708" SrcFileId="1" StartOffset="3606"/>
+</LocList>
+<StmntSeq Intrnl_Id="144">
+<LocList>
+<Loc EndOffset="3704" SrcFileId="1" StartOffset="3641"/>
+</LocList>
+<CondStmnt CovItemId="S53" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="145">
+<Branch CovItemId="B15" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Implct="false" Intrnl_Id="146">
+<Cond/>
+<LocList>
+<Loc EndOffset="3681" SrcFileId="1" StartOffset="3669"/>
+</LocList>
+<StmntSeq Intrnl_Id="147">
+<LocList>
+<Loc EndOffset="3681" SrcFileId="1" StartOffset="3669"/>
+</LocList>
+<BasicStmnt CovItemId="S54" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="148">
+<LocList>
+<Loc EndOffset="3681" SrcFileId="1" StartOffset="3669"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B16" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Implct="false" Intrnl_Id="149">
+<Cond>
+<Loc EndOffset="3689" SrcFileId="1" StartOffset="3685"/>
+</Cond>
+<LocList>
+<Loc EndOffset="3704" SrcFileId="1" StartOffset="3690"/>
+</LocList>
+<StmntSeq Intrnl_Id="150">
+<LocList>
+<Loc EndOffset="3704" SrcFileId="1" StartOffset="3690"/>
+</LocList>
+<BasicStmnt CovItemId="S55" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="151">
+<LocList>
+<Loc EndOffset="3704" SrcFileId="1" StartOffset="3690"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="3643" SrcFileId="1" StartOffset="3641"/>
+<LocList>
+<Loc EndOffset="3704" SrcFileId="1" StartOffset="3641"/>
+</LocList>
+<RootTerm CovItemId="C8" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="152">
+<OpTerm BooleanOpId="2" Intrnl_Id="153">
+<BasicBoolTerm Intrnl_Id="154">
+<LocList>
+<Loc EndOffset="3659" SrcFileId="1" StartOffset="3644"/>
+</LocList>
+</BasicBoolTerm>
+<BasicBoolTerm Intrnl_Id="155">
+<LocList>
+<Loc EndOffset="3667" SrcFileId="1" StartOffset="3661"/>
+</LocList>
+</BasicBoolTerm>
+<LocList>
+<Loc EndOffset="3661" SrcFileId="1" StartOffset="3659"/>
+</LocList>
+</OpTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="103" HierarchyLvlTypeId="4" Intrnl_Id="156" Name="getXBar">
+<Header>
+<Loc EndOffset="3765" SrcFileId="1" StartOffset="3745"/>
+</Header>
+<LocList>
+<Loc EndOffset="3787" SrcFileId="1" StartOffset="3745"/>
+</LocList>
+<StmntSeq Intrnl_Id="157">
+<LocList>
+<Loc EndOffset="3783" SrcFileId="1" StartOffset="3771"/>
+</LocList>
+<BasicStmnt CovItemId="S56" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="158">
+<LocList>
+<Loc EndOffset="3783" SrcFileId="1" StartOffset="3771"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="104" HierarchyLvlTypeId="4" Intrnl_Id="159" Name="setXBar">
+<Header>
+<Loc EndOffset="3891" SrcFileId="1" StartOffset="3835"/>
+</Header>
+<LocList>
+<Loc EndOffset="4142" SrcFileId="1" StartOffset="3835"/>
+</LocList>
+<StmntSeq Intrnl_Id="160">
+<LocList>
+<Loc EndOffset="3951" SrcFileId="1" StartOffset="3897"/>
+<Loc EndOffset="4138" SrcFileId="1" StartOffset="3955"/>
+</LocList>
+<CondStmnt CovItemId="S57" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="161">
+<Branch CovItemId="B17" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Implct="false" Intrnl_Id="162">
+<Cond/>
+<LocList>
+<Loc EndOffset="3951" SrcFileId="1" StartOffset="3932"/>
+</LocList>
+<StmntSeq Intrnl_Id="163">
+<LocList>
+<Loc EndOffset="3951" SrcFileId="1" StartOffset="3932"/>
+</LocList>
+<BasicStmnt CovItemId="S58" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="164">
+<LocList>
+<Loc EndOffset="3951" SrcFileId="1" StartOffset="3932"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B18" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Implct="true" Intrnl_Id="165">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="166">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="3899" SrcFileId="1" StartOffset="3897"/>
+<LocList>
+<Loc EndOffset="3951" SrcFileId="1" StartOffset="3897"/>
+</LocList>
+<RootTerm CovItemId="C9" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="167">
+<OpTerm BooleanOpId="2" Intrnl_Id="168">
+<BasicBoolTerm Intrnl_Id="169">
+<LocList>
+<Loc EndOffset="3910" SrcFileId="1" StartOffset="3900"/>
+</LocList>
+</BasicBoolTerm>
+<BasicBoolTerm Intrnl_Id="170">
+<LocList>
+<Loc EndOffset="3926" SrcFileId="1" StartOffset="3912"/>
+</LocList>
+</BasicBoolTerm>
+<LocList>
+<Loc EndOffset="3912" SrcFileId="1" StartOffset="3910"/>
+</LocList>
+</OpTerm>
+</RootTerm>
+</CondStmnt>
+<CondStmnt CovItemId="S59" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="171">
+<Branch CovItemId="B19" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Implct="false" Intrnl_Id="172">
+<Cond/>
+<LocList>
+<Loc EndOffset="4005" SrcFileId="1" StartOffset="3988"/>
+</LocList>
+<StmntSeq Intrnl_Id="173">
+<LocList>
+<Loc EndOffset="4005" SrcFileId="1" StartOffset="3988"/>
+</LocList>
+<BasicStmnt CovItemId="S60" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="174">
+<LocList>
+<Loc EndOffset="4005" SrcFileId="1" StartOffset="3988"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B20" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Implct="false" Intrnl_Id="175">
+<Cond>
+<Loc EndOffset="4013" SrcFileId="1" StartOffset="4009"/>
+</Cond>
+<LocList>
+<Loc EndOffset="4138" SrcFileId="1" StartOffset="4014"/>
+</LocList>
+<StmntSeq Intrnl_Id="176">
+<LocList>
+<Loc EndOffset="4138" SrcFileId="1" StartOffset="4014"/>
+</LocList>
+<CondStmnt CovItemId="S61" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="177">
+<Branch CovItemId="B21" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Implct="false" Intrnl_Id="178">
+<Cond/>
+<LocList>
+<Loc EndOffset="4106" SrcFileId="1" StartOffset="4035"/>
+</LocList>
+<StmntSeq Intrnl_Id="179">
+<LocList>
+<Loc EndOffset="4106" SrcFileId="1" StartOffset="4035"/>
+</LocList>
+<BasicStmnt CovItemId="S62" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="180">
+<LocList>
+<Loc EndOffset="4106" SrcFileId="1" StartOffset="4035"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B22" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Implct="false" Intrnl_Id="181">
+<Cond>
+<Loc EndOffset="4115" SrcFileId="1" StartOffset="4111"/>
+</Cond>
+<LocList>
+<Loc EndOffset="4138" SrcFileId="1" StartOffset="4121"/>
+</LocList>
+<StmntSeq Intrnl_Id="182">
+<LocList>
+<Loc EndOffset="4138" SrcFileId="1" StartOffset="4121"/>
+</LocList>
+<BasicStmnt CovItemId="S63" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="183">
+<LocList>
+<Loc EndOffset="4138" SrcFileId="1" StartOffset="4121"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="4016" SrcFileId="1" StartOffset="4014"/>
+<LocList>
+<Loc EndOffset="4138" SrcFileId="1" StartOffset="4014"/>
+</LocList>
+<RootTerm CovItemId="C11" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="184">
+<BasicBoolTerm Intrnl_Id="185">
+<LocList>
+<Loc EndOffset="4027" SrcFileId="1" StartOffset="4017"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="3957" SrcFileId="1" StartOffset="3955"/>
+<LocList>
+<Loc EndOffset="4138" SrcFileId="1" StartOffset="3955"/>
+</LocList>
+<RootTerm CovItemId="C10" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="186">
+<OpTerm BooleanOpId="2" Intrnl_Id="187">
+<BasicBoolTerm Intrnl_Id="188">
+<LocList>
+<Loc EndOffset="3970" SrcFileId="1" StartOffset="3958"/>
+</LocList>
+</BasicBoolTerm>
+<BasicBoolTerm Intrnl_Id="189">
+<LocList>
+<Loc EndOffset="3986" SrcFileId="1" StartOffset="3974"/>
+</LocList>
+</BasicBoolTerm>
+<LocList>
+<Loc EndOffset="3973" SrcFileId="1" StartOffset="3971"/>
+</LocList>
+</OpTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="105" HierarchyLvlTypeId="4" Intrnl_Id="190" Name="getLivMax">
+<Header>
+<Loc EndOffset="4203" SrcFileId="1" StartOffset="4181"/>
+</Header>
+<LocList>
+<Loc EndOffset="4227" SrcFileId="1" StartOffset="4181"/>
+</LocList>
+<StmntSeq Intrnl_Id="191">
+<LocList>
+<Loc EndOffset="4223" SrcFileId="1" StartOffset="4209"/>
+</LocList>
+<BasicStmnt CovItemId="S64" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="192">
+<LocList>
+<Loc EndOffset="4223" SrcFileId="1" StartOffset="4209"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="106" HierarchyLvlTypeId="4" Intrnl_Id="193" Name="setLivMax">
+<Header>
+<Loc EndOffset="4316" SrcFileId="1" StartOffset="4283"/>
+</Header>
+<LocList>
+<Loc EndOffset="4437" SrcFileId="1" StartOffset="4283"/>
+</LocList>
+<StmntSeq Intrnl_Id="194">
+<LocList>
+<Loc EndOffset="4407" SrcFileId="1" StartOffset="4322"/>
+<Loc EndOffset="4433" SrcFileId="1" StartOffset="4411"/>
+</LocList>
+<CondStmnt CovItemId="S65" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="195">
+<Branch CovItemId="B23" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Implct="false" Intrnl_Id="196">
+<Cond/>
+<LocList>
+<Loc EndOffset="4375" SrcFileId="1" StartOffset="4354"/>
+</LocList>
+<StmntSeq Intrnl_Id="197">
+<LocList>
+<Loc EndOffset="4375" SrcFileId="1" StartOffset="4354"/>
+</LocList>
+<BasicStmnt CovItemId="S66" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="198">
+<LocList>
+<Loc EndOffset="4375" SrcFileId="1" StartOffset="4354"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B24" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Implct="false" Intrnl_Id="199">
+<Cond>
+<Loc EndOffset="4383" SrcFileId="1" StartOffset="4379"/>
+</Cond>
+<LocList>
+<Loc EndOffset="4407" SrcFileId="1" StartOffset="4384"/>
+</LocList>
+<StmntSeq Intrnl_Id="200">
+<LocList>
+<Loc EndOffset="4407" SrcFileId="1" StartOffset="4384"/>
+</LocList>
+<BasicStmnt CovItemId="S67" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="201">
+<LocList>
+<Loc EndOffset="4407" SrcFileId="1" StartOffset="4384"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="4324" SrcFileId="1" StartOffset="4322"/>
+<LocList>
+<Loc EndOffset="4407" SrcFileId="1" StartOffset="4322"/>
+</LocList>
+<RootTerm CovItemId="C12" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="202">
+<OpTerm BooleanOpId="2" Intrnl_Id="203">
+<BasicBoolTerm Intrnl_Id="204">
+<LocList>
+<Loc EndOffset="4342" SrcFileId="1" StartOffset="4325"/>
+</LocList>
+</BasicBoolTerm>
+<BasicBoolTerm Intrnl_Id="205">
+<LocList>
+<Loc EndOffset="4352" SrcFileId="1" StartOffset="4344"/>
+</LocList>
+</BasicBoolTerm>
+<LocList>
+<Loc EndOffset="4344" SrcFileId="1" StartOffset="4342"/>
+</LocList>
+</OpTerm>
+</RootTerm>
+</CondStmnt>
+<BasicStmnt CovItemId="S68" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="206">
+<LocList>
+<Loc EndOffset="4433" SrcFileId="1" StartOffset="4411"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="107" HierarchyLvlTypeId="4" Intrnl_Id="207" Name="getLivMin">
+<Header>
+<Loc EndOffset="4502" SrcFileId="1" StartOffset="4480"/>
+</Header>
+<LocList>
+<Loc EndOffset="4526" SrcFileId="1" StartOffset="4480"/>
+</LocList>
+<StmntSeq Intrnl_Id="208">
+<LocList>
+<Loc EndOffset="4522" SrcFileId="1" StartOffset="4508"/>
+</LocList>
+<BasicStmnt CovItemId="S69" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="209">
+<LocList>
+<Loc EndOffset="4522" SrcFileId="1" StartOffset="4508"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="108" HierarchyLvlTypeId="4" Intrnl_Id="210" Name="setLivMin">
+<Header>
+<Loc EndOffset="4615" SrcFileId="1" StartOffset="4582"/>
+</Header>
+<LocList>
+<Loc EndOffset="4759" SrcFileId="1" StartOffset="4582"/>
+</LocList>
+<StmntSeq Intrnl_Id="211">
+<LocList>
+<Loc EndOffset="4654" SrcFileId="1" StartOffset="4621"/>
+<Loc EndOffset="4755" SrcFileId="1" StartOffset="4658"/>
+</LocList>
+<CondStmnt CovItemId="S70" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="212">
+<Branch CovItemId="B25" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Implct="false" Intrnl_Id="213">
+<Cond/>
+<LocList>
+<Loc EndOffset="4654" SrcFileId="1" StartOffset="4640"/>
+</LocList>
+<StmntSeq Intrnl_Id="214">
+<LocList>
+<Loc EndOffset="4654" SrcFileId="1" StartOffset="4640"/>
+</LocList>
+<BasicStmnt CovItemId="S71" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="215">
+<LocList>
+<Loc EndOffset="4654" SrcFileId="1" StartOffset="4640"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B26" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Implct="true" Intrnl_Id="216">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="217">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="4623" SrcFileId="1" StartOffset="4621"/>
+<LocList>
+<Loc EndOffset="4654" SrcFileId="1" StartOffset="4621"/>
+</LocList>
+<RootTerm CovItemId="C13" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="218">
+<BasicBoolTerm Intrnl_Id="219">
+<LocList>
+<Loc EndOffset="4634" SrcFileId="1" StartOffset="4624"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+<CondStmnt CovItemId="S72" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="220">
+<Branch CovItemId="B27" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Implct="false" Intrnl_Id="221">
+<Cond/>
+<LocList>
+<Loc EndOffset="4727" SrcFileId="1" StartOffset="4706"/>
+</LocList>
+<StmntSeq Intrnl_Id="222">
+<LocList>
+<Loc EndOffset="4727" SrcFileId="1" StartOffset="4706"/>
+</LocList>
+<BasicStmnt CovItemId="S73" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="223">
+<LocList>
+<Loc EndOffset="4727" SrcFileId="1" StartOffset="4706"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B28" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Implct="false" Intrnl_Id="224">
+<Cond>
+<Loc EndOffset="4735" SrcFileId="1" StartOffset="4731"/>
+</Cond>
+<LocList>
+<Loc EndOffset="4755" SrcFileId="1" StartOffset="4736"/>
+</LocList>
+<StmntSeq Intrnl_Id="225">
+<LocList>
+<Loc EndOffset="4755" SrcFileId="1" StartOffset="4736"/>
+</LocList>
+<BasicStmnt CovItemId="S74" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="226">
+<LocList>
+<Loc EndOffset="4755" SrcFileId="1" StartOffset="4736"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="4660" SrcFileId="1" StartOffset="4658"/>
+<LocList>
+<Loc EndOffset="4755" SrcFileId="1" StartOffset="4658"/>
+</LocList>
+<RootTerm CovItemId="C14" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="227">
+<OpTerm BooleanOpId="2" Intrnl_Id="228">
+<OpTerm BooleanOpId="2" Intrnl_Id="229">
+<BasicBoolTerm Intrnl_Id="230">
+<LocList>
+<Loc EndOffset="4678" SrcFileId="1" StartOffset="4661"/>
+</LocList>
+</BasicBoolTerm>
+<BasicBoolTerm Intrnl_Id="231">
+<LocList>
+<Loc EndOffset="4688" SrcFileId="1" StartOffset="4680"/>
+</LocList>
+</BasicBoolTerm>
+<LocList>
+<Loc EndOffset="4680" SrcFileId="1" StartOffset="4678"/>
+</LocList>
+</OpTerm>
+<BasicBoolTerm Intrnl_Id="232">
+<LocList>
+<Loc EndOffset="4704" SrcFileId="1" StartOffset="4690"/>
+</LocList>
+</BasicBoolTerm>
+<LocList>
+<Loc EndOffset="4690" SrcFileId="1" StartOffset="4688"/>
+</LocList>
+</OpTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="109" HierarchyLvlTypeId="4" Intrnl_Id="233" Name="getDistSchermo">
+<Header>
+<Loc EndOffset="4834" SrcFileId="1" StartOffset="4807"/>
+</Header>
+<LocList>
+<Loc EndOffset="4863" SrcFileId="1" StartOffset="4807"/>
+</LocList>
+<StmntSeq Intrnl_Id="234">
+<LocList>
+<Loc EndOffset="4859" SrcFileId="1" StartOffset="4840"/>
+</LocList>
+<BasicStmnt CovItemId="S75" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="235">
+<LocList>
+<Loc EndOffset="4859" SrcFileId="1" StartOffset="4840"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="110" HierarchyLvlTypeId="4" Intrnl_Id="236" Name="setDistSchermo">
+<Header>
+<Loc EndOffset="4968" SrcFileId="1" StartOffset="4925"/>
+</Header>
+<LocList>
+<Loc EndOffset="5012" SrcFileId="1" StartOffset="4925"/>
+</LocList>
+<StmntSeq Intrnl_Id="237">
+<LocList>
+<Loc EndOffset="5008" SrcFileId="1" StartOffset="4974"/>
+</LocList>
+<BasicStmnt CovItemId="S76" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="238">
+<LocList>
+<Loc EndOffset="5008" SrcFileId="1" StartOffset="4974"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="111" HierarchyLvlTypeId="4" Intrnl_Id="239" Name="getC1">
+<Header>
+<Loc EndOffset="5067" SrcFileId="1" StartOffset="5047"/>
+</Header>
+<LocList>
+<Loc EndOffset="5087" SrcFileId="1" StartOffset="5047"/>
+</LocList>
+<StmntSeq Intrnl_Id="240">
+<LocList>
+<Loc EndOffset="5083" SrcFileId="1" StartOffset="5073"/>
+</LocList>
+<BasicStmnt CovItemId="S77" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="241">
+<LocList>
+<Loc EndOffset="5083" SrcFileId="1" StartOffset="5073"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="112" HierarchyLvlTypeId="4" Intrnl_Id="242" Name="setC1">
+<Header>
+<Loc EndOffset="5158" SrcFileId="1" StartOffset="5131"/>
+</Header>
+<LocList>
+<Loc EndOffset="5181" SrcFileId="1" StartOffset="5131"/>
+</LocList>
+<StmntSeq Intrnl_Id="243">
+<LocList>
+<Loc EndOffset="5177" SrcFileId="1" StartOffset="5164"/>
+</LocList>
+<BasicStmnt CovItemId="S78" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="244">
+<LocList>
+<Loc EndOffset="5177" SrcFileId="1" StartOffset="5164"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="113" HierarchyLvlTypeId="4" Intrnl_Id="245" Name="getC2">
+<Header>
+<Loc EndOffset="5236" SrcFileId="1" StartOffset="5216"/>
+</Header>
+<LocList>
+<Loc EndOffset="5256" SrcFileId="1" StartOffset="5216"/>
+</LocList>
+<StmntSeq Intrnl_Id="246">
+<LocList>
+<Loc EndOffset="5252" SrcFileId="1" StartOffset="5242"/>
+</LocList>
+<BasicStmnt CovItemId="S79" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="247">
+<LocList>
+<Loc EndOffset="5252" SrcFileId="1" StartOffset="5242"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="114" HierarchyLvlTypeId="4" Intrnl_Id="248" Name="setC2">
+<Header>
+<Loc EndOffset="5327" SrcFileId="1" StartOffset="5300"/>
+</Header>
+<LocList>
+<Loc EndOffset="5350" SrcFileId="1" StartOffset="5300"/>
+</LocList>
+<StmntSeq Intrnl_Id="249">
+<LocList>
+<Loc EndOffset="5346" SrcFileId="1" StartOffset="5333"/>
+</LocList>
+<BasicStmnt CovItemId="S80" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="250">
+<LocList>
+<Loc EndOffset="5346" SrcFileId="1" StartOffset="5333"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="115" HierarchyLvlTypeId="4" Intrnl_Id="251" Name="getPos">
+<Header>
+<Loc EndOffset="5412" SrcFileId="1" StartOffset="5389"/>
+</Header>
+<LocList>
+<Loc EndOffset="5433" SrcFileId="1" StartOffset="5389"/>
+</LocList>
+<StmntSeq Intrnl_Id="252">
+<LocList>
+<Loc EndOffset="5429" SrcFileId="1" StartOffset="5418"/>
+</LocList>
+<BasicStmnt CovItemId="S81" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="253">
+<LocList>
+<Loc EndOffset="5429" SrcFileId="1" StartOffset="5418"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="116" HierarchyLvlTypeId="4" Intrnl_Id="254" Name="setPos">
+<Header>
+<Loc EndOffset="5556" SrcFileId="1" StartOffset="5525"/>
+</Header>
+<LocList>
+<Loc EndOffset="5676" SrcFileId="1" StartOffset="5525"/>
+</LocList>
+<StmntSeq Intrnl_Id="255">
+<LocList>
+<Loc EndOffset="5654" SrcFileId="1" StartOffset="5562"/>
+<Loc EndOffset="5668" SrcFileId="1" StartOffset="5658"/>
+</LocList>
+<CondStmnt CovItemId="S82" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="256">
+<Branch CovItemId="B29" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Implct="false" Intrnl_Id="257">
+<Cond/>
+<LocList>
+<Loc EndOffset="5654" SrcFileId="1" StartOffset="5575"/>
+</LocList>
+<StmntSeq Intrnl_Id="258">
+<LocList>
+<Loc EndOffset="5601" SrcFileId="1" StartOffset="5581"/>
+<Loc EndOffset="5626" SrcFileId="1" StartOffset="5606"/>
+<Loc EndOffset="5649" SrcFileId="1" StartOffset="5631"/>
+</LocList>
+<BasicStmnt CovItemId="S83" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="259">
+<LocList>
+<Loc EndOffset="5601" SrcFileId="1" StartOffset="5581"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S84" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="260">
+<LocList>
+<Loc EndOffset="5626" SrcFileId="1" StartOffset="5606"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S85" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="261">
+<LocList>
+<Loc EndOffset="5649" SrcFileId="1" StartOffset="5631"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B30" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Implct="true" Intrnl_Id="262">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="263">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="5564" SrcFileId="1" StartOffset="5562"/>
+<LocList>
+<Loc EndOffset="5654" SrcFileId="1" StartOffset="5562"/>
+</LocList>
+<RootTerm CovItemId="C15" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="264">
+<BasicBoolTerm Intrnl_Id="265">
+<LocList>
+<Loc EndOffset="5573" SrcFileId="1" StartOffset="5565"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+<BasicStmnt CovItemId="S86" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="266">
+<LocList>
+<Loc EndOffset="5668" SrcFileId="1" StartOffset="5658"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="117" HierarchyLvlTypeId="4" Intrnl_Id="267" Name="getLivello">
+<Header>
+<Loc EndOffset="5755" SrcFileId="1" StartOffset="5729"/>
+</Header>
+<LocList>
+<Loc EndOffset="5780" SrcFileId="1" StartOffset="5729"/>
+</LocList>
+<StmntSeq Intrnl_Id="268">
+<LocList>
+<Loc EndOffset="5776" SrcFileId="1" StartOffset="5761"/>
+</LocList>
+<BasicStmnt CovItemId="S87" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="269">
+<LocList>
+<Loc EndOffset="5776" SrcFileId="1" StartOffset="5761"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="118" HierarchyLvlTypeId="4" Intrnl_Id="270" Name="setLivello">
+<Header>
+<Loc EndOffset="5868" SrcFileId="1" StartOffset="5836"/>
+</Header>
+<LocList>
+<Loc EndOffset="5890" SrcFileId="1" StartOffset="5836"/>
+</LocList>
+<StmntSeq Intrnl_Id="271">
+<LocList>
+<Loc EndOffset="5886" SrcFileId="1" StartOffset="5874"/>
+</LocList>
+<BasicStmnt CovItemId="S88" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="272">
+<LocList>
+<Loc EndOffset="5886" SrcFileId="1" StartOffset="5874"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="119" HierarchyLvlTypeId="4" Intrnl_Id="273" Name="getAngolo">
+<Header>
+<Loc EndOffset="5954" SrcFileId="1" StartOffset="5929"/>
+</Header>
+<LocList>
+<Loc EndOffset="5978" SrcFileId="1" StartOffset="5929"/>
+</LocList>
+<StmntSeq Intrnl_Id="274">
+<LocList>
+<Loc EndOffset="5974" SrcFileId="1" StartOffset="5960"/>
+</LocList>
+<BasicStmnt CovItemId="S89" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="275">
+<LocList>
+<Loc EndOffset="5974" SrcFileId="1" StartOffset="5960"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="120" HierarchyLvlTypeId="4" Intrnl_Id="276" Name="setAngolo">
+<Header>
+<Loc EndOffset="6056" SrcFileId="1" StartOffset="6025"/>
+</Header>
+<LocList>
+<Loc EndOffset="6082" SrcFileId="1" StartOffset="6025"/>
+</LocList>
+<StmntSeq Intrnl_Id="277">
+<LocList>
+<Loc EndOffset="6078" SrcFileId="1" StartOffset="6062"/>
+</LocList>
+<BasicStmnt CovItemId="S90" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="278">
+<LocList>
+<Loc EndOffset="6078" SrcFileId="1" StartOffset="6062"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="121" HierarchyLvlTypeId="4" Intrnl_Id="279" Name="getDataEsame">
+<Header>
+<Loc EndOffset="6154" SrcFileId="1" StartOffset="6124"/>
+</Header>
+<LocList>
+<Loc EndOffset="6181" SrcFileId="1" StartOffset="6124"/>
+</LocList>
+<StmntSeq Intrnl_Id="280">
+<LocList>
+<Loc EndOffset="6177" SrcFileId="1" StartOffset="6160"/>
+</LocList>
+<BasicStmnt CovItemId="S91" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="281">
+<LocList>
+<Loc EndOffset="6177" SrcFileId="1" StartOffset="6160"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="122" HierarchyLvlTypeId="4" Intrnl_Id="282" Name="setDimensione">
+<Header>
+<Loc EndOffset="6309" SrcFileId="1" StartOffset="6262"/>
+</Header>
+<LocList>
+<Loc EndOffset="6348" SrcFileId="1" StartOffset="6262"/>
+</LocList>
+<StmntSeq Intrnl_Id="283">
+<LocList>
+<Loc EndOffset="6344" SrcFileId="1" StartOffset="6315"/>
+</LocList>
+<BasicStmnt CovItemId="S92" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="284">
+<LocList>
+<Loc EndOffset="6344" SrcFileId="1" StartOffset="6315"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="123" HierarchyLvlTypeId="4" Intrnl_Id="285" Name="getDimensione">
+<Header>
+<Loc EndOffset="6419" SrcFileId="1" StartOffset="6387"/>
+</Header>
+<LocList>
+<Loc EndOffset="6447" SrcFileId="1" StartOffset="6387"/>
+</LocList>
+<StmntSeq Intrnl_Id="286">
+<LocList>
+<Loc EndOffset="6443" SrcFileId="1" StartOffset="6425"/>
+</LocList>
+<BasicStmnt CovItemId="S93" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="287">
+<LocList>
+<Loc EndOffset="6443" SrcFileId="1" StartOffset="6425"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="124" HierarchyLvlTypeId="4" Intrnl_Id="288" Name="setDimensione">
+<Header>
+<Loc EndOffset="6574" SrcFileId="1" StartOffset="6536"/>
+</Header>
+<LocList>
+<Loc EndOffset="6621" SrcFileId="1" StartOffset="6536"/>
+</LocList>
+<StmntSeq Intrnl_Id="289">
+<LocList>
+<Loc EndOffset="6617" SrcFileId="1" StartOffset="6580"/>
+</LocList>
+<BasicStmnt CovItemId="S94" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="290">
+<LocList>
+<Loc EndOffset="6617" SrcFileId="1" StartOffset="6580"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="125" HierarchyLvlTypeId="4" Intrnl_Id="291" Name="setDimensione">
+<Header>
+<Loc EndOffset="6753" SrcFileId="1" StartOffset="6709"/>
+</Header>
+<LocList>
+<Loc EndOffset="6810" SrcFileId="1" StartOffset="6709"/>
+</LocList>
+<StmntSeq Intrnl_Id="292">
+<LocList>
+<Loc EndOffset="6806" SrcFileId="1" StartOffset="6759"/>
+</LocList>
+<BasicStmnt CovItemId="S95" CovItemPrefix="libFSTest.test.DatiGenerazione.java" Intrnl_Id="293">
+<LocList>
+<Loc EndOffset="6806" SrcFileId="1" StartOffset="6759"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+</HierarchyLvl>
+</HierarchyLvl>
+</HierarchyLvl>
+</HierarchyLvl>
+</MASTRoot>
+</TestSessionContainer>
