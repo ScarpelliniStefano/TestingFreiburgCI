@@ -17,5 +17,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="C:/Users/stefa/Desktop/TVSW/tools_x_tvsw_2021_03/tools_x_tvsw_2021/eclipse/plugins/org.evosuite.plugins.eclipse.deps_1.0.7.201806011952/lib/evosuite.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
