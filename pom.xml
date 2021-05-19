@@ -4,7 +4,7 @@
   <artifactId>libFST</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <build>
-  	<testSourceDirectory>test</testSourceDirectory>
+  	<testSourceDirectory>test/libFSTtest.session</testSourceDirectory>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
       <plugin>
